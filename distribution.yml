@@ -1,0 +1,9 @@
+---
+- name: Example
+  hosts: all
+  gather_facts: yes  # Ensure facts are gathered before using them
+
+  tasks:
+    - name: Classify hosts by OS distribution
+      ansible.builtin.group_by:
+        key: "os_{{ ansible_facts['distribution'] }}"
